@@ -1,1 +1,0 @@
-# maximgomezc.github.io

@@ -1,0 +1,55 @@
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.productos h2 {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+
+.card-img-top{
+    height: 220px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #fff;
+    padding: 10px;
+} 
+tr{
+    background-color: greenyellow;
+}
+
+.img-listado{
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+}
+
+.img-carrito {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+.img-index-verMas{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.etiquetaStock {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: .25rem .5rem;
+    font-size: .75rem;
+    border-radius: .5rem;
+    opacity: 0.95;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial — SebaMax Hardware</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand navbar-dark fixed-top bg-dark border-bottom border-success">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-success lh-1" href="index.html"> SEBAMAX<br>HARDWARE </a>
+
+        <div class="navbar-collapse">
+            <ul class="navbar-nav me-auto ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="listado-productos.html">Productos</a>
+                </li>
+                <li class="nav-item d-none soloAdmin">
+                    <a class="nav-link text-warning" href="listado-usuarios.html">Usuarios</a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="carrito.html" class="btn btn-outline-success soloUsuario">
+                    <i class="bi bi-cart3"></i>
+                </a>
+                <div id="contenedorBtnIngresar" class="d-flex align-items-center gap-2"></div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="w-100 flex-grow-1 bg-secondary-subtle pt-5">
+    <div class="container py-5">
+        <div id="historialContainer"></div>
+    </div>
+</section>
+
+<footer id="footer" class="bg-dark mt-auto text-white py-4">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <div class="col-md-4 mb-3">
+                <h5>SEBAMAX Hardware</h5>
+                <p>La tienda N°1 en tecnología.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Soporte</h5>
+                <ul class="list-unstyled">
+                    <li>Email: soporte@sebamax.com</li>
+                    <li>Tel: +54 9 11 1234 5678</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Redes</h5>
+                <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                    <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <p class="text-center mb-0">© 2026 SebaMax Gaming Hardware</p>
+    </div>
+</footer>
+
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light border-success">
+
+            <div class="modal-header border-success">
+                <h5 class="modal-title text-success">
+                    <i class="bi bi-shield-lock me-2"></i>Iniciar Sesión
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="loginError" class="alert alert-danger d-none py-2" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    Usuario o contraseña incorrectos.
+                </div>
+
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="usuario" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control bg-dark text-light border-secondary" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+                    </button>
+                </form>
+
+                <p class="text-secondary text-center mt-3 mb-0 small">
+                    Demo — usuario: <code>usuario</code> / admin: <code>admin</code>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/historial.js"></script>
+</body>
+</html>

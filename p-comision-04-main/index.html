@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SebaMax Hardware</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand navbar-dark fixed-top bg-dark border-bottom border-success">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-success lh-1" href="index.html"> SEBAMAX<br>HARDWARE </a>
+
+        <div class="navbar-collapse">
+            <ul class="navbar-nav me-auto ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="listado-productos.html">Productos</a>
+                </li>
+
+                <li class="nav-item d-none soloAdmin">
+                    <a class="nav-link text-warning" href="listado-usuarios.html">
+                        <i class="bi bi-gear-fill"></i> Panel Admin
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="carrito.html" class="btn btn-outline-success soloUsuario">
+                    <i class="bi bi-cart3"></i>
+                    <span class="badge bg-success ms-1 carrito-contador d-none">0</span>
+                </a>
+                <div id="contenedorBtnIngresar" class="d-flex align-items-center gap-2">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="bi bi-person"></i> Ingresar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="bg-dark text-light py-5 pt-5 border-bottom border-success">
+    <div class="container pt-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-center text-lg-start">
+                <span class="badge bg-success mb-3">OFERTAS DESTACADAS</span>
+                <h1 class="display-4 fw-bold mb-3">Armá tu PC Gamer al mejor precio</h1>
+                <p class="lead text-secondary mb-4">
+                    Encontrá placas de video, procesadores, memorias RAM,
+                    periféricos gamer y mucho más con descuentos exclusivos.
+                </p>
+
+                <div class="alert alert-warning d-none soloAdmin" role="alert">
+                    <i class="bi bi-shield-fill-check me-2"></i>
+                    <strong>Modo Admin activo.</strong> Tenés acceso a funciones de gestión.
+                </div>
+            </div>
+
+            <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                <img src="img/Fondo-Negro-1.jpg" alt="" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-secondary-subtle">
+    <div class="contenedor">
+        <h2>Nuestros Productos</h2>
+
+        <div class="row g-4" id="contenedorProductos">
+
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light border-success">
+
+            <div class="modal-header border-success">
+                <h5 class="modal-title text-success">
+                    <i class="bi bi-shield-lock me-2"></i>Iniciar Sesión
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="loginError" class="alert alert-danger d-none py-2" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    Usuario o contraseña incorrectos.
+                </div>
+
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="usuario" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control bg-dark text-light border-secondary" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+                    </button>
+                </form>
+
+                <p class="text-secondary text-center mt-3 mb-0 small">
+                    Demo — usuario: <code>usuario</code> / admin: <code>admin</code>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editarProductoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-light border-success">
+            <div class="modal-header border-success">
+                <h5 class="modal-title text-success">
+                    <i class="bi bi-pencil-fill me-2"></i>Editar producto
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="editarProductoError" class="alert alert-danger d-none py-2" role="alert"></div>
+                <form id="editarProductoForm">
+                    <input type="hidden" id="editarId">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="editarPrecio" class="form-label">Precio</label>
+                            <input type="number" class="form-control bg-dark text-light border-secondary" id="editarPrecio">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="editarStock" class="form-label">Stock</label>
+                            <input type="number" min="0" step="1" class="form-control bg-dark text-light border-secondary" id="editarStock">
+                        </div>
+                    </div>
+                    <div class="mt-4 d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" id="editarEliminarBtn" class="btn btn-danger">Eliminar producto</button>
+                        <button type="submit" class="btn btn-success">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer" class="bg-dark text-white py-4 mt-auto">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <div class="col-md-4 mb-3">
+                <h5>SEBAMAX Hardware</h5>
+                <p>La tienda N°1 en tecnología.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5>Soporte</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Garantía</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Términos y condiciones.</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Redes</h5>
+                <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                    <a href="https://compragamer.com/" target="_blank">
+                        <i class="bi bi-instagram fs-4"></i>
+                    </a>
+                    <a href="https://compragamer.com/" target="_blank">
+                        <i class="bi bi-facebook fs-4"></i>
+                    </a>
+                    <a href="https://compragamer.com/" target="_blank">
+                        <i class="bi bi-twitter-x fs-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <p class="text-center mb-0">© 2026 SebaMax Gaming Hardware</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/index.js"></script>
+
+</body>
+</html>
